@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="6" fill="#4f6ef7"/>
+  <g stroke="rgba(255,255,255,0.7)" stroke-width="0.8">
+    <line x1="13" y1="3" x2="13" y2="29"/>
+    <line x1="19" y1="3" x2="19" y2="29"/>
+    <line x1="3" y1="13" x2="29" y2="13"/>
+    <line x1="3" y1="19" x2="29" y2="19"/>
+  </g>
+  <text x="8" y="11" font-size="6" font-family="system-ui,sans-serif" font-weight="700" fill="white" text-anchor="middle">5</text>
+  <text x="16" y="11" font-size="6" font-family="system-ui,sans-serif" font-weight="700" fill="rgba(255,255,255,0.4)" text-anchor="middle">·</text>
+  <text x="24" y="11" font-size="6" font-family="system-ui,sans-serif" font-weight="700" fill="white" text-anchor="middle">3</text>
+  <text x="8" y="19" font-size="6" font-family="system-ui,sans-serif" font-weight="700" fill="rgba(255,255,255,0.4)" text-anchor="middle">·</text>
+  <text x="16" y="19" font-size="6" font-family="system-ui,sans-serif" font-weight="700" fill="white" text-anchor="middle">9</text>
+  <text x="24" y="19" font-size="6" font-family="system-ui,sans-serif" font-weight="700" fill="rgba(255,255,255,0.4)" text-anchor="middle">·</text>
+  <text x="8" y="27" font-size="6" font-family="system-ui,sans-serif" font-weight="700" fill="white" text-anchor="middle">1</text>
+  <text x="16" y="27" font-size="6" font-family="system-ui,sans-serif" font-weight="700" fill="rgba(255,255,255,0.4)" text-anchor="middle">·</text>
+  <text x="24" y="27" font-size="6" font-family="system-ui,sans-serif" font-weight="700" fill="white" text-anchor="middle">8</text>
+</svg>
