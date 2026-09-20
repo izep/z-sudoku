@@ -153,6 +153,7 @@ function App() {
             )}
 
             <NumPad
+              grid={game.grid}
               pencilMode={game.pencilMode}
               onDigit={game.inputDigit}
               onErase={game.erase}
