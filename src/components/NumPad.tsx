@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useMemo } from 'react'
+import type { Grid } from '../hooks/useGame'
 
 interface NumPadProps {
+  grid?: Grid
   pencilMode: boolean
   onDigit: (d: number) => void
   onErase: () => void
@@ -13,22 +15,47 @@ interface NumPadProps {
 }
 
 const NumPad: React.FC<NumPadProps> = ({
-  pencilMode, onDigit, onErase, onUndo, onHint, onTogglePencil,
+  grid, pencilMode, onDigit, onErase, onUndo, onHint, onTogglePencil,
   hintPhase, hasHint, hintsUsed
 }) => {
+  const digitCounts = useMemo(() => {
+    const counts: Record<number, number> = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0 }
+    if (!grid) return counts
+    for (const row of grid) {
+      for (const cell of row) {
+        if (cell.value >= 1 && cell.value <= 9) {
+          counts[cell.value]++
+        }
+      }
+    }
+    return counts
+  }, [grid])
+
   return (
     <div className="numpad">
       <div className="numpad-digits">
-        {[1,2,3,4,5,6,7,8,9].map(d => (
-          <button
-            key={d}
-            className="numpad-digit"
-            onClick={() => onDigit(d)}
-            aria-label={`${pencilMode ? 'Note' : 'Enter'} ${d}`}
-          >
-            {d}
-          </button>
-        ))}
+        {[1,2,3,4,5,6,7,8,9].map(d => {
+          const count = digitCounts[d] || 0
+          const remaining = Math.max(0, 9 - count)
+          const isComplete = remaining === 0
+
+          return (
+            <button
+              key={d}
+              className={`numpad-digit${isComplete ? ' numpad-digit--complete' : ''}`}
+              onClick={() => onDigit(d)}
+              aria-label={`${pencilMode ? 'Note' : 'Enter'} ${d}${isComplete ? ' (completed)' : `, ${remaining} remaining`}`}
+              disabled={isComplete && !pencilMode}
+            >
+              <span className="numpad-digit-val">{d}</span>
+              {grid && (
+                <span className={`numpad-digit-count${isComplete ? ' numpad-digit-count--done' : ''}`}>
+                  {isComplete ? '✓' : remaining}
+                </span>
+              )}
+            </button>
+          )
+        })}
       </div>
       <div className="numpad-actions">
         <button className="action-btn" onClick={onUndo} aria-label="Undo" title="Undo">

@@ -365,15 +365,22 @@ html, body {
 
 .numpad-digit {
   aspect-ratio: 1;
-  font-size: clamp(1.1rem, 4vw, 1.55rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(1rem, 3.6vw, 1.45rem);
   font-weight: 700;
   border: 1px solid var(--border);
   border-radius: 9px;
   background: var(--bg-raised);
   color: var(--text);
   cursor: pointer;
-  transition: background 0.1s, color 0.1s, border-color 0.1s, box-shadow 0.1s, transform 0.08s;
+  transition: background 0.1s, color 0.1s, border-color 0.1s, box-shadow 0.1s, transform 0.08s, opacity 0.15s;
   -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  line-height: 1;
+  padding: 2px 0;
 }
 .numpad-digit:hover {
   background: var(--sel-bg);
@@ -382,6 +389,34 @@ html, body {
   box-shadow: var(--glow-btn);
 }
 .numpad-digit:active { transform: scale(0.91); }
+
+.numpad-digit-val {
+  line-height: 1;
+}
+
+.numpad-digit-count {
+  font-size: 0.58rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.numpad-digit-count--done {
+  color: var(--brand-cyan);
+  font-size: 0.62rem;
+  font-weight: 700;
+}
+
+.numpad-digit--complete {
+  opacity: 0.38;
+  border-color: transparent;
+  background: var(--bg-surface);
+}
+
+.numpad-digit--complete:hover {
+  opacity: 0.7;
+}
 
 .numpad-actions {
   display: grid;
